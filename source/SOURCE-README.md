@@ -51,4 +51,4 @@ The existing development support files also allow this project to be reopened in
 
 The site is published at https://nooruddinsabeel-dotcom.github.io/ using the static files at the repository root. This `source/` directory preserves the editable project. After `pnpm build:github`, copy the contents of `source/out/` to the repository root, preserving `source/` and the root README, then commit the source and exported files together.
 
-The portfolio includes the supplied LinkedIn profile in its contact section. Update the link in `app/page.tsx`.
+The portfolio includes the supplied BIM Lead résumé at `public/resume/Shaikh_Nooruddin_BIM_Lead.pdf`, the professional email from that résumé, and the supplied LinkedIn profile. Update those links in `app/page.tsx`.

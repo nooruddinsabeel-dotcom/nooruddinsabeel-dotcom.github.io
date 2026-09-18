@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowDown, ArrowUpRight, ArrowUp, MapPin, Maximize2, Plus, Minus, Layers3, ScanLine, Ruler, Wind } from "lucide-react";
+import { ArrowDown, ArrowUpRight, ArrowUp, Download, MapPin, Maximize2, Plus, Minus, Layers3, ScanLine, Ruler, Wind } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const asset = (name: string) => `${base}/work/${name}`;
+const resume = `${base}/resume/Shaikh_Nooruddin_BIM_Lead.pdf`;
 const drawings = [
   { id: "layout", tab: "Drainage layout", title: "Basement drainage layout", revision: "REV 01", role: "My drawing", date: "23 Jul 2026", scale: "1:100 at A1", description: "Dimensioned drainage routes, invert levels, cleanouts and connections, developed over the basement architectural and structural layout." },
   { id: "sections", tab: "Sections & details", title: "Sump pits, sections & drainage details", revision: "REV 01", role: "My drawing", date: "23 Jul 2026", scale: "NTS at A1", description: "Sump-pit plans and sections, valve pits, cleanout details, grease and oil interceptors, catch basins and channel gratings." },
@@ -48,7 +49,7 @@ export default function Home() {
           <p className="eyebrow"><span className="small-rule" />BIM · MEP · HVAC</p>
           <h1 id="hero-title">Engineering<br />in <em>detail.</em></h1>
           <p className="intro">I’m Nooruddin Shaikh. I develop building-services models and detailed drawings that connect design intent with on-site delivery.</p>
-          <a className="primary-link" href="#work">Explore my work <ArrowDown size={18} aria-hidden="true" /></a>
+          <div className="hero-actions"><a className="primary-link" href="#work">Explore my work <ArrowDown size={18} aria-hidden="true" /></a><a className="resume-link" href={resume} download="Shaikh_Nooruddin_BIM_Lead.pdf">Download résumé <Download size={18} aria-hidden="true" /></a></div>
           <div className="hero-profile"><span>B.E. Mechanical</span><span>BIM modelling & coordination</span></div>
         </div>
         <div className="hero-drawing">
@@ -93,11 +94,13 @@ export default function Home() {
         </div>
       </section>
       <section id="contact" className="contact-section" aria-labelledby="contact-title"><div className="shell">
-        <div className="section-heading"><p className="eyebrow"><span className="section-no">04</span>Contact</p></div>
+        <div className="section-heading"><p className="eyebrow"><span className="section-no">04</span>Contact & résumé</p></div>
         <div className="contact-layout">
-          <div className="contact-copy"><h2 id="contact-title">Let’s <em>connect.</em></h2><p>For BIM roles, MEP coordination and project enquiries.</p></div>
+          <div className="contact-copy"><h2 id="contact-title">Let’s <em>connect.</em></h2><p>For BIM roles, MEP coordination and project enquiries.</p><a className="primary-link" href={resume} download="Shaikh_Nooruddin_BIM_Lead.pdf">Download résumé <Download size={18} aria-hidden="true" /></a><p className="resume-note">BIM Lead · PDF · 2 pages</p></div>
           <div className="contact-methods">
+            <a className="contact-link" href="mailto:nooruddinsabeel@gmail.com"><span><span className="contact-label">Email</span><span className="contact-value">nooruddinsabeel@gmail.com</span></span><ArrowUpRight size={22} aria-hidden="true" /></a>
             <a className="contact-link" href="https://www.linkedin.com/in/contactnooruddin" target="_blank" rel="noopener noreferrer" aria-label="View Nooruddin Shaikh on LinkedIn (opens in a new tab)"><span><span className="contact-label">LinkedIn</span><span className="contact-value">View my professional profile</span></span><ArrowUpRight size={22} aria-hidden="true" /></a>
+            <p className="contact-location"><MapPin size={16} aria-hidden="true" />Dubai, United Arab Emirates</p>
           </div>
         </div>
       </div></section>
