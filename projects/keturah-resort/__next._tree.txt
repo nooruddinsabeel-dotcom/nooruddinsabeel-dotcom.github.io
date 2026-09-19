@@ -1,0 +1,2 @@
+:HL["/_next/static/css/d6451e53a1bb59a4.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"projects","param":null,"prefetchHints":4192,"slots":{"children":{"name":"keturah-resort","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"l6EU04G06H3xlcHjmGiXJ"}

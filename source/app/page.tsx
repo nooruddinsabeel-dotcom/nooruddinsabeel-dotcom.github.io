@@ -1,40 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowDown, ArrowUpRight, ArrowUp, Download, MapPin, Maximize2, Plus, Minus, Layers3, ScanLine, Ruler, Wind } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ArrowDown, ArrowUpRight, ArrowUp, Download, MapPin, Layers3, ScanLine, Ruler, Wind } from "lucide-react";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const asset = (name: string) => `${base}/work/${name}`;
 const resume = `${base}/resume/Shaikh_Nooruddin_BIM_Lead.pdf`;
-const drawings = [
-  { id: "layout", tab: "Drainage layout", title: "Basement drainage layout", revision: "REV 01", role: "My drawing", date: "23 Jul 2026", scale: "1:100 at A1", description: "Dimensioned drainage routes, invert levels, cleanouts and connections, developed over the basement architectural and structural layout." },
-  { id: "sections", tab: "Sections & details", title: "Sump pits, sections & drainage details", revision: "REV 01", role: "My drawing", date: "23 Jul 2026", scale: "NTS at A1", description: "Sump-pit plans and sections, valve pits, cleanout details, grease and oil interceptors, catch basins and channel gratings." },
-  { id: "design-input", tab: "Design input", title: "Consultant drainage design", revision: "P03", role: "RSP design input", date: "24 Dec 2025", scale: "1:100 at A1", description: "RSP's 100% detailed-design submission provided as the design input for the basement drainage work. Consultant-authored reference." },
-  { id: "enlarged", tab: "Enlarged views", title: "Basement drainage enlarged views", revision: "REV 00", role: "My drawing · sheet 03/03", date: "23 Jul 2026", scale: "1:100 at A1", description: "Enlarged drainage areas showing local routing, connection points and levels. Revision shown here follows the supplied title block." },
-];
-
-function DrawingViewer({ drawing }: { drawing: typeof drawings[number] }) {
-  const [zoom, setZoom] = useState(1);
-  return <Dialog onOpenChange={() => setZoom(1)}>
-    <DialogTrigger asChild><button className="text-button"><Maximize2 size={16} aria-hidden="true" />Enlarge drawing</button></DialogTrigger>
-    <DialogContent className="drawing-dialog">
-      <div className="dialog-heading"><DialogTitle>{drawing.title}</DialogTitle><DialogDescription>{drawing.revision} · {drawing.role}</DialogDescription></div>
-      <div className="zoom-tools" aria-label="Drawing zoom">
-        <button aria-label="Zoom out" onClick={() => setZoom(z => Math.max(1, z - .5))} disabled={zoom === 1}><Minus size={18} /></button>
-        <output aria-live="polite">{Math.round(zoom * 100)}%</output>
-        <button aria-label="Zoom in" onClick={() => setZoom(z => Math.min(3, z + .5))} disabled={zoom === 3}><Plus size={18} /></button>
-        <button className="fit-button" onClick={() => setZoom(1)}>Fit</button>
-        <a href={asset(`${drawing.id}.pdf`)} target="_blank" rel="noopener noreferrer">Open PDF <ArrowUpRight size={16} aria-hidden="true" /></a>
-      </div>
-      <div className="zoom-canvas" tabIndex={0} aria-label="Drawing image. Use scrollbars to explore when zoomed.">
-        <img src={asset(`${drawing.id}.webp`)} alt={`${drawing.title}, ${drawing.revision}, original drawing sheet`} style={{width: `${zoom * 100}%`, maxWidth: "none"}} width={2504} height={1769} />
-      </div>
-    </DialogContent>
-  </Dialog>;
-}
-
 export default function Home() {
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
@@ -54,30 +24,18 @@ export default function Home() {
         </div>
         <div className="hero-drawing">
           <div className="drawing-topline"><span>SELECTED DRAWING / 01</span><span>M11 · EV4 · B01</span></div>
-          <a className="hero-sheet" href="#drawings" aria-label="Explore the Keturah Resort drainage drawings"><img src={asset("layout-crop.webp")} alt="Noor's Keturah Resort basement drainage layout, showing pipe routes and building geometry" width={1925} height={1353} fetchPriority="high" /><span className="sheet-corner">REV<br /><strong>01</strong></span></a>
+          <a className="hero-sheet" href={`${base}/projects/keturah-resort/#final-drawings`} aria-label="Explore the Keturah Resort drainage drawings"><img src={asset("layout-crop.webp")} alt="Noor's Keturah Resort basement drainage layout, showing pipe routes and building geometry" width={1925} height={1353} fetchPriority="high" /><span className="sheet-corner">REV<br /><strong>01</strong></span></a>
           <div className="drawing-bottomline"><span>Keturah Resort</span><span>Basement drainage <ArrowUpRight size={14} aria-hidden="true" /></span></div>
           <span className="drawing-side" aria-hidden="true">PLAN / COORDINATE / DETAIL</span>
         </div>
       </section>
       <div className="tool-strip"><div className="shell"><span className="tool-label">MY TOOLKIT</span><span>Revit</span><span>Navisworks</span><span>Autodesk Construction Cloud</span><span>HAP</span><span>Excel</span></div></div>
       <section className="work-section shell" id="work" aria-labelledby="work-title">
-        <div className="section-heading"><p className="eyebrow"><span className="section-no">01</span>Selected work</p><span className="section-note">Design intent, developed in detail.</span></div>
-        <div className="project-heading"><div><h2 id="work-title">Keturah Resort<span className="accent">.</span></h2><p>Al Jaddaf, Dubai · Earth, Water & Sky mansion packages</p></div><div className="project-tags"><span>MEP / BIM</span><span>Builders’ work</span></div></div>
-        <div className="project-overview">
-          <div className="project-summary"><h3>From design inputs to<br />coordinated MEP deliverables.</h3><p>I work on BIM modelling and multidisciplinary coordination for Keturah Resort, a luxury waterfront development in Al Jaddaf, Dubai. My scope covers HVAC, water supply, drainage, electrical and ELV containment, and builders’ work for the Earth, Water and Sky mansion packages.</p><p>Working through Ramtech Software Solutions, I develop models from issued-for-construction inputs, prepare shop drawings, incorporate review comments and support as-built updates and quantity submissions.</p></div>
-          <dl className="project-facts"><div><dt>MY ROLE</dt><dd>BIM Modeler / BIM Coordinator</dd></div><div><dt>MY COMPANY</dt><dd>Ramtech Software Solutions Pvt Ltd</dd></div><div><dt>MAIN / MEP CONTRACTOR</dt><dd>CITIC</dd></div><div><dt>CONSULTANT</dt><dd>RSP Architects Planners & Engineers Pte Ltd</dd></div><div><dt>SOFTWARE</dt><dd>Revit · Navisworks · AutoCAD · Autodesk Construction Cloud</dd></div><div><dt>FEATURED DRAWINGS</dt><dd>M11 / EV4 · Basement drainage</dd></div></dl>
-        </div>
-        <div className="case-study-points project-responsibilities"><article><span className="mono">01 / MODELLING</span><h3>Develop the services</h3><p>Model HVAC, drainage and water-supply systems from design inputs. Cross-check duct airflow and typical-unit heat-load information before modelling, and develop cable-tray and trunking models from electrical and ELV CAD layouts.</p></article><article><span className="mono">02 / COORDINATION</span><h3>Resolve the interfaces</h3><p>Coordinate MEP services with architectural and structural requirements. Review service routes, elevations and clashes, and prepare builders’ work drawings for block walls, slabs, core walls and retaining walls.</p></article><article><span className="mono">03 / DOCUMENTATION</span><h3>Support project delivery</h3><p>Prepare shop drawings and quantity takeoffs, respond to coordination and review comments, and support BOQ submissions and as-built updates. Check service interfaces against the project’s detailed architectural requirements.</p></article></div>
-        <Tabs defaultValue="layout" className="drawing-tabs" id="drawings">
-          <div className="drawing-browser-heading"><h3>Inside the drawing set</h3><span className="mono">04 SHEETS</span></div>
-          <TabsList className="sheet-tabs" aria-label="Drawing sheets">{drawings.map((d, i) => <TabsTrigger value={d.id} key={d.id}><span className="tab-number">0{i + 1}</span>{d.tab}</TabsTrigger>)}</TabsList>
-          {drawings.map(d => <TabsContent value={d.id} key={d.id} className="sheet-panel">
-            <div className="sheet-toolbar"><span className={d.id === "design-input" ? "revision-tag reference-tag" : "revision-tag"}>{d.revision}</span><span>{d.role}</span><div className="toolbar-action"><DrawingViewer drawing={d} /></div></div>
-            <div className="sheet-preview"><img src={asset(`${d.id}.webp`)} alt={`${d.title} – ${d.revision}`} width={2504} height={1769} loading="lazy" /></div>
-            <div className="sheet-caption"><div><h4>{d.title}</h4><p>{d.description}</p></div><div className="sheet-spec"><span>{d.date}</span><span>{d.scale}</span><a href={asset(`${d.id}.pdf`)} target="_blank" rel="noopener noreferrer">View original PDF <ArrowUpRight size={15} aria-hidden="true" /></a></div></div>
-          </TabsContent>)}
-        </Tabs>
-        <div className="case-study-points"><article><span className="mono">01 / INPUT</span><h3>Read the design</h3><p>The P03 reference establishes the basement drainage arrangement, pipe services and design connections.</p></article><article><span className="mono">02 / DEVELOPMENT</span><h3>Resolve the detail</h3><p>The layout documents dimensioned pipe routes and levels alongside the building geometry.</p></article><article><span className="mono">03 / DOCUMENTATION</span><h3>Explain the interfaces</h3><p>Plans and sections show sump pits, valves, cleanouts, interceptors and channel-drain connections.</p></article></div>
+        <div className="section-heading"><p className="eyebrow"><span className="section-no">01</span>Selected work</p><span className="section-note">Explore the project, from inputs to delivery.</span></div>
+        <a className="project-card" href={`${base}/projects/keturah-resort/`} id="drawings">
+          <div className="project-card-image"><img src={asset("layout-crop.webp")} alt="Keturah Resort basement drainage drawing" width={1925} height={1353} loading="lazy" /></div>
+          <div className="project-card-copy"><p className="eyebrow">MEP / BIM · AL JADDAF, DUBAI</p><h2 id="work-title">Keturah Resort<span className="accent">.</span></h2><p>Modelling, coordination and detailed building-services documentation for the Earth, Water and Sky mansion packages.</p><div className="project-tags"><span>Project information</span><span>Drawings</span><span>Coordination</span></div><span className="project-card-link">Open Keturah portfolio <ArrowUpRight size={22} aria-hidden="true" /></span></div>
+        </a>
       </section>
       <section id="expertise" className="expertise-section" aria-labelledby="expertise-title"><div className="shell">
         <div className="section-heading"><p className="eyebrow"><span className="section-no">02</span>What I bring</p></div>
@@ -91,7 +49,7 @@ export default function Home() {
       <section id="about" className="about-section shell" aria-labelledby="about-title">
         <div className="section-heading"><p className="eyebrow"><span className="section-no">03</span>Behind the work</p></div>
         <div className="about-layout"><div><h2 id="about-title">Mechanical roots.<br /><em>BIM mindset.</em></h2><p className="about-intro">I’m a mechanical engineering graduate working in the UAE, bringing modelling, MEP coordination and HVAC knowledge together.</p><p>My project experience spans coordinated drawings, as-built submissions and HVAC calculations. I have also led a five-member modelling team and worked with Autodesk Construction Cloud across live projects.</p><div className="qualification"><span className="mono">LEARNING & DEVELOPMENT</span><p>Autodesk Construction Cloud BIM Management</p><span>Udemy course</span></div></div>
-          <div className="experience-list"><p className="mono">PROJECT EXPERIENCE</p><article><span>01</span><div><h3>Keturah Resort</h3><p>Shop drawings & drainage detailing</p></div><a href="#work" aria-label="View Keturah Resort case study"><ArrowUpRight size={20} /></a></article><article><span>02</span><div><h3>Mangrove Residency</h3><p>Service coordination & as-built drawings</p></div></article><article><span>03</span><div><h3>Orla Infinity</h3><p>Water-supply as-built submissions</p></div></article><article><span>04</span><div><h3>Boulevard</h3><p>HVAC load calculations & HAP reports</p></div></article></div>
+          <div className="experience-list"><p className="mono">PROJECT EXPERIENCE</p><article><span>01</span><div><h3>Keturah Resort</h3><p>Shop drawings & drainage detailing</p></div><a href={`${base}/projects/keturah-resort/`} aria-label="View Keturah Resort case study"><ArrowUpRight size={20} /></a></article><article><span>02</span><div><h3>Mangrove Residency</h3><p>Service coordination & as-built drawings</p></div></article><article><span>03</span><div><h3>Orla Infinity</h3><p>Water-supply as-built submissions</p></div></article><article><span>04</span><div><h3>Boulevard</h3><p>HVAC load calculations & HAP reports</p></div></article></div>
         </div>
       </section>
       <section id="contact" className="contact-section" aria-labelledby="contact-title"><div className="shell">
