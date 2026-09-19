@@ -102,6 +102,7 @@ h2 { font-size:clamp(2.75rem,4.6vw,4.5rem); font-weight:400; line-height:1.08; l
 .case-study-points .mono { color:#a4b8ba; font-size:.75rem; letter-spacing:.06em; }
 .case-study-points h3 { font-size:1.25rem; font-weight:400; margin:12px 0; }
 .case-study-points p { color:#a5b7b9; font-size:.9375rem; line-height:1.7; }
+.project-responsibilities { margin-top:0; margin-bottom:44px; }
 .expertise-section { background:#192223; border-block:1px solid var(--border); padding-block:80px 90px; }
 .expertise-layout { display:grid; grid-template-columns:.92fr 1fr; gap:80px; }
 .expertise-layout h2 { font-size:clamp(2.8rem,4.2vw,4rem); }
